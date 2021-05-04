@@ -1,4 +1,7 @@
-<table class='table'>
+   <h3>フォロー一覧</h3>
+ <% if @user.following_user.any? %>
+ <!--any?が実行したものが存在していたら、tureを表示-->
+ <table class='table'>
   <thead>
     <tr>
       <th>image</th>
@@ -7,9 +10,7 @@
     </tr>
   </thead>
   <tbody>
-  <h3>フォロー一覧</h3>
     <% @user.following_user.each do |user| %>
-      <<% if user %>
         <tr>
           <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
           <td><%= user.name %></td>
@@ -17,9 +18,9 @@
           <td><%= "フォロワー数: #{user.followed.count}" %></td>
           <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
         </tr>
-      <% else %>
-        <p>ユーザーはいません</p>
-      <% end %>
     <% end %>
   </tbody>
 </table>
+  <% else %>
+  <p>ユーザーはいません</p>
+  <% end %>
