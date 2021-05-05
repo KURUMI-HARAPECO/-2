@@ -1,4 +1,9 @@
-<h2>Results index</h2>
+<% if @range == '2' %>
+ <h2>Books search for "<%= @word %>"</h2>
+<% else %>
+ <h2>Users search for "<%= @word %>"</h2>
+<% end %>
+
 <!--books一覧 -->
 <table class="table table-hover table-inverse">
 　<% if @range == '2' %>
