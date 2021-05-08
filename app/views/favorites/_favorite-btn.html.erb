@@ -1,13 +1,13 @@
 <% if book.favorited_by?(current_user) %>
 <!--投稿記事に付けられた「いいね」に、自分（ログインしているユーザ）が含まれているかをfavorited_by?メソッドで判定しています。-->
   <p>
-    <%= link_to book_favorites_path(book), method: :delete do %>
+    <%= link_to book_favorites_path(book), method: :delete, remote: true do %>
       ♥<%= book.favorites.count %> いいね
     <% end %>
   </p>
   <% else %>
   <p>
-    <%= link_to book_favorites_path(book), method: :post do %>
+    <%= link_to book_favorites_path(book), method: :post, remote: true do %>
       ♡<%= book.favorites.count %> いいね
     <% end %>
   </p>
